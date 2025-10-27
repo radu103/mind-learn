@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindLearn - Aplicația ta inteligentă de învățare</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>MindLearn</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Acasă</a></li>
+                    <li><a href="#assessment" class="nav-link">Scanare</a></li>
+                    <li><a href="#learn" class="nav-link">Învață</a></li>
+                    <li><a href="#teams" class="nav-link">Echipe</a></li>
+                    <li><a href="#teachers" class="nav-link">Profesori</a></li>
+                </ul>
+                <div class="user-profile">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="username">Utilizator</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="gradient-text">MindLearn</span>
+                        <br>Învață în modul tău unic
+                    </h1>
+                    <p class="hero-description">
+                        Aplicația care îți înțelege stilul de învățare și se adaptează la tine pentru o experiență educațională personalizată și eficientă.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="startAssessment()">
+                            <i class="fas fa-brain"></i>
+                            Începe scanarea
+                        </button>
+                        <button class="btn btn-secondary" onclick="viewProgress()">
+                            <i class="fas fa-chart-line"></i>
+                            Vezi progresul
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="brain-animation">
+                        <div class="brain-core"></div>
+                        <div class="neuron neuron-1"></div>
+                        <div class="neuron neuron-2"></div>
+                        <div class="neuron neuron-3"></div>
+                        <div class="neuron neuron-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features">
+                <h2>Caracteristici principale</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Scanare personalizată</h3>
+                        <p>Mini-jocuri interactive pentru a detecta stilul tău de învățare: vizual, auditiv, logic sau intuitiv.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Detectarea tiparelor</h3>
+                        <p>Analizează viteza de învățare, momentele optime și metodele care te ajută cel mai mult.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3>Adaptare automată</h3>
+                        <p>Transformă lecțiile în formatul perfect pentru tine: vizual, auditiv sau practic.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Suport emoțional</h3>
+                        <p>Detectează starea ta emoțională și adaptează modul de predare pentru a te motiva.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Echipe complementare</h3>
+                        <p>Te conectează cu alți elevi cu stiluri complementare pentru învățare în echipă.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3>Sprijin pentru profesori</h3>
+                        <p>Ajută profesorii să înțeleagă și să se adapteze la stilurile de învățare ale elevilor.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Assessment Section -->
+        <section id="assessment" class="section">
+            <div class="assessment-container">
+                <h2>Scanare personalizată</h2>
+                <p class="assessment-description">
+                    Să descoperim împreună cum învața cel mai bine! Completează aceste mini-jocuri pentru a-ți identifica stilul de învățare.
+                </p>
+                
+                <div class="assessment-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="assessmentProgress"></div>
+                    </div>
+                    <span class="progress-text" id="progressText">0% completat</span>
+                </div>
+
+                <div class="assessment-game active" id="visualGame">
+                    <h3>🎨 Jocul vizual</h3>
+                    <p>Urmărește secvența de culori și repetă-o:</p>
+                    <div class="color-sequence">
+                        <div class="color-button" data-color="red"></div>
+                        <div class="color-button" data-color="blue"></div>
+                        <div class="color-button" data-color="green"></div>
+                        <div class="color-button" data-color="yellow"></div>
+                    </div>
+                    <div class="sequence-display" id="sequenceDisplay"></div>
+                    <button class="btn btn-primary" onclick="startColorSequence()">Începe jocul</button>
+                </div>
+
+                <div class="assessment-game" id="memoryGame">
+                    <h3>🧠 Jocul de memorie</h3>
+                    <p>Memorează cuvintele afișate și repetă-le în ordine:</p>
+                    <div class="memory-words" id="memoryWords"></div>
+                    <input type="text" id="memoryInput" placeholder="Scrie cuvintele separate prin virgulă">
+                    <button class="btn btn-primary" onclick="startMemoryGame()">Începe jocul</button>
+                </div>
+
+                <div class="assessment-game" id="logicGame">
+                    <h3>🔢 Jocul logic</h3>
+                    <p>Completează secvența numerică:</p>
+                    <div class="logic-sequence" id="logicSequence">
+                        <span>2</span> <span>4</span> <span>8</span> <span>?</span> <span>32</span>
+                    </div>
+                    <input type="number" id="logicInput" placeholder="Care este numărul lipsă?">
+                    <button class="btn btn-primary" onclick="startLogicGame()">Verifică răspunsul</button>
+                </div>
+
+                <div class="assessment-results" id="assessmentResults">
+                    <h3>🎉 Rezultatele tale</h3>
+                    <div class="learning-style" id="learningStyle"></div>
+                    <button class="btn btn-primary" onclick="continueToLearning()">Continuă la învățare</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Section -->
+        <section id="learn" class="section">
+            <div class="learning-container">
+                <h2>Lecțiile tale personalizate</h2>
+                <div class="mood-detector">
+                    <p>Cum te simți astăzi?</p>
+                    <div class="mood-buttons">
+                        <button class="mood-btn" data-mood="energic" onclick="setMood('energic')">😄 Energic</button>
+                        <button class="mood-btn" data-mood="concentrat" onclick="setMood('concentrat')">🤔 Concentrat</button>
+                        <button class="mood-btn" data-mood="obosit" onclick="setMood('obosit')">😴 Obosit</button>
+                        <button class="mood-btn" data-mood="stresat" onclick="setMood('stresat')">😰 Stresat</button>
+                    </div>
+                </div>
+
+                <div class="lesson-adaptation">
+                    <h3>Lecția adaptată pentru tine</h3>
+                    <div class="lesson-content" id="lessonContent">
+                        <p>Selectează o stare pentru a vedea cum se adaptează lecția!</p>
+                    </div>
+                </div>
+
+                <div class="learning-metrics">
+                    <div class="metric">
+                        <span class="metric-label">Eficiența învățării</span>
+                        <div class="metric-bar">
+                            <div class="metric-fill" style="width: 75%"></div>
+                        </div>
+                        <span class="metric-value">75%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Timp optim de studiu</span>
+                        <div class="metric-bar">
+                            <div class="metric-fill" style="width: 60%"></div>
+                        </div>
+                        <span class="metric-value">Dimineața</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teams Section -->
+        <section id="teams" class="section">
+            <div class="teams-container">
+                <h2>Echipe de studiu complementare</h2>
+                <p>Te conectăm cu colegi care au stiluri de învățare complementare pentru o experiență de învățare în echipă optimă.</p>
+                
+                <div class="team-matching">
+                    <div class="your-profile">
+                        <h3>Profilul tău</h3>
+                        <div class="profile-card">
+                            <div class="profile-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="profile-info">
+                                <h4 id="userProfileName">Tu</h4>
+                                <span class="learning-type" id="userLearningType">Stil vizual</span>
+                                <div class="strengths">
+                                    <span class="strength">Creativitate</span>
+                                    <span class="strength">Analiză vizuală</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="suggested-teammates">
+                        <h3>Colegi sugerat</h3>
+                        <div class="teammates-grid">
+                            <div class="teammate-card">
+                                <div class="profile-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="teammate-info">
+                                    <h4>Ana M.</h4>
+                                    <span class="learning-type">Stil logic</span>
+                                    <div class="compatibility">Match: 95%</div>
+                                    <button class="btn btn-small">Conectează-te</button>
+                                </div>
+                            </div>
+                            <div class="teammate-card">
+                                <div class="profile-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="teammate-info">
+                                    <h4>Mihai P.</h4>
+                                    <span class="learning-type">Stil auditiv</span>
+                                    <div class="compatibility">Match: 88%</div>
+                                    <button class="btn btn-small">Conectează-te</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="study-groups">
+                    <h3>Grupurile tale de studiu</h3>
+                    <div class="groups-list">
+                        <div class="group-card">
+                            <div class="group-header">
+                                <h4>Matematică Avansată</h4>
+                                <span class="member-count">3 membri</span>
+                            </div>
+                            <div class="group-members">
+                                <div class="member">Ana M. (Logic)</div>
+                                <div class="member">Mihai P. (Auditiv)</div>
+                                <div class="member">Tu (Vizual)</div>
+                            </div>
+                            <div class="group-stats">
+                                <span>Progres grup: 67%</span>
+                                <div class="competition-score">🏆 Locul 2 în clasă</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teachers Section -->
+        <section id="teachers" class="section">
+            <div class="teachers-container">
+                <h2>Panoul profesorilor</h2>
+                <p>Instrumentele de care aveți nevoie pentru a înțelege și adapta predarea la stilurile de învățare ale elevilor.</p>
+                
+                <div class="teacher-dashboard">
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>28</h3>
+                                <p>Elevi activi</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>83%</h3>
+                                <p>Progres mediu</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>15</h3>
+                                <p>Obiective atinse</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="class-overview">
+                        <h3>Stilurile de învățare ale clasei</h3>
+                        <div class="learning-styles-chart">
+                            <div class="style-bar">
+                                <span class="style-label">Vizual</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 45%"></div>
+                                </div>
+                                <span class="percentage">45%</span>
+                            </div>
+                            <div class="style-bar">
+                                <span class="style-label">Auditiv</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 30%"></div>
+                                </div>
+                                <span class="percentage">30%</span>
+                            </div>
+                            <div class="style-bar">
+                                <span class="style-label">Logic</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 15%"></div>
+                                </div>
+                                <span class="percentage">15%</span>
+                            </div>
+                            <div class="style-bar">
+                                <span class="style-label">Intuitiv</span>
+                                <div class="bar">
+                                    <div class="fill" style="width: 10%"></div>
+                                </div>
+                                <span class="percentage">10%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="students-list">
+                        <h3>Lista elevilor</h3>
+                        <div class="students-table">
+                            <div class="table-header">
+                                <span>Nume</span>
+                                <span>Stil învățare</span>
+                                <span>Progres</span>
+                                <span>Stare emoțională</span>
+                                <span>Acțiuni</span>
+                            </div>
+                            <div class="table-row">
+                                <span>Ana Popescu</span>
+                                <span class="learning-type-badge visual">Vizual</span>
+                                <span class="progress-mini">85%</span>
+                                <span class="mood-indicator good">Concentrat</span>
+                                <button class="btn btn-small">Vezi detalii</button>
+                            </div>
+                            <div class="table-row">
+                                <span>Mihai Ionescu</span>
+                                <span class="learning-type-badge logical">Logic</span>
+                                <span class="progress-mini">92%</span>
+                                <span class="mood-indicator excellent">Energic</span>
+                                <button class="btn btn-small">Vezi detalii</button>
+                            </div>
+                            <div class="table-row">
+                                <span>Elena Vasile</span>
+                                <span class="learning-type-badge auditory">Auditiv</span>
+                                <span class="progress-mini">67%</span>
+                                <span class="mood-indicator warning">Stresat</span>
+                                <button class="btn btn-small">Vezi detalii</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating AI Assistant -->
+    <div class="ai-assistant" id="aiAssistant">
+        <div class="ai-avatar">
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="ai-message" id="aiMessage">
+            Salut! Sunt asistentul tău AI. Cum te pot ajuta astăzi?
+        </div>
+        <button class="ai-toggle" onclick="toggleAI()">
+            <i class="fas fa-comment"></i>
+        </button>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/assessment.js"></script>
+    <script src="js/learning.js"></script>
+    <script src="js/teams.js"></script>
+</body>
+</html>
